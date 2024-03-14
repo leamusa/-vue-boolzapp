@@ -13,65 +13,56 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src='https://unpkg.com/vue@3'></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <!-- Title -->
     <title>Boolzapp</title>
   </head>
   <body>
+    <header></header>
     <div id="app">
-
       <div class="container">
-    
-        <div class="contact">
+        <div class="slider">
           <div class="profile">
             <div class="img">
-              <img src="./assets/img/avatar_io.jpg" alt="me">
+              <img src="./assets/img/avatar_io.jpg" alt="io" />
+              <div class="listIcons">
+                <ul>
+                  <li>a</li>
+                  <li>b</li>
+                  <li>c</li>
+                </ul>
+              </div>
             </div>
-            <div class="listIcons">
-              <ul>
-                <li>a</li>
-                <li>b</li>
-                <li>c</li>
-              </ul>
-    
+            <div class="info">
+              <div class="icon">
+                <p>X</p>
+              </div>
+              <div class="text">
+                <p>Receive notifications for new messages</p>
+                <a href="#">Enable desktop notifications</a>
+              </div>
             </div>
-    
-            </div>
-          </div>
-    
-          <div class="notification">
-            <div class="icon">
-              <p>d</p>
-            </div>
-            <div class="text">
-              <p>Receive notifications for new messages</p>
-              <a  class="link" href="#">Enable desktop notifications</a>
-            </div>
-          </div>
-    
-          <div class="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-              <input type="text" placeholder="Search or start a new chat ">
+            <div class="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+              <input type="text" placeholder="Search or start a new chat " />
             </div>
           </div>
-    
-          <div class="address-book">
-           <ul>
-            <li v-for="(contact,index) in contacts">
-    
-    
-            </li>
-           </ul>
-    </div>
-    
-        <div class="chat">
-    
+          <div class="box">
+            <div class="avatar">
+              <img src="./assets/img/avatar_1.jpg" alt="avatar_1" />
+            </div>
+            <div class="user">
+              <h3>Michele</h3>
+              <p>Last message sent</p>
+            </div>
+            <div class="clock">
+              <p>12:00</p>
+            </div>
+          </div>
         </div>
-    
+        <div class="chat"></div>
       </div>
-    
     </div>
-    
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

@@ -1,9 +1,14 @@
-//Milestone 1
-
 const { createApp } = Vue;
 
 createApp({
   data() {
-    return {};
+    return {
+      contatti: [
+        {
+          nome: "Michele",
+          avatar: "assets/img/avatar_1.jpg",
+        },
+      ],
+    };
   },
 }).mount("#app");

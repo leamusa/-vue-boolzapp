@@ -1,36 +1,51 @@
-.green {
-  background-color: #159688;
+body {
+  background-color: #dadbd4;
+  position: relative;
+}
+
+header {
   width: 100%;
   height: 100px;
+  background-color: #159688;
 }
 
-.grey {
-  background-color: #dadbd4;
-  width: 100%;
+#app {
+  position: absolute;
   height: 100vh;
-}
-
-.background {
-  position: relative;
+  background-color: aliceblue;
+  z-index: 999;
+  width: 1200px;
+  top: 20px;
+  left: 300px;
 }
 
 .container {
   width: 80%;
-  height: 100vh;
-  position: absolute;
-  z-index: 999;
-  top: 20px;
-  left: 149px;
+  display: flex;
 }
 
-.contact {
-  width: 500px;
+.slider {
+  width: 400px;
+}
+
+.chat {
+  width: 800px;
+  background-color: yellow;
 }
 
 img {
-  width: 70px;
+  width: 60px;
   border-radius: 50%;
   margin: 10px;
+}
+
+.listIcons ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.listIcons li {
+  margin: 20px;
 }
 
 .profile {
@@ -39,40 +54,35 @@ img {
   align-items: center;
   padding-top: 20px;
   background-color: #dadbd4;
-  height: 60px;
+  height: 70px;
 }
 
-.listIcons ul {
-  display: flex;
-}
-
-.listIcons li {
-  margin: 20px;
-  list-style-type: none;
-}
-
-.notification {
+.info {
   background-color: rgb(145 219 250);
   height: 80px;
-  width: 500px;
+}
+
+input {
+  width: 99%;
+  height: 50px;
+}
+
+.box {
   display: flex;
-  margin-top: 20px;
+  background-color: #159688;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.link {
-  color: grey;
+.avatar {
+  width: 70px;
+  margin-top: 10px;
 }
 
-.icon {
-  margin-left: 20px;
+.user h3 {
+  margin-top: 30px;
 }
 
-.text {
-  margin-left: 20px;
-}
-
-.search {
-  height: 60px;
-  width: 500px;
-  background-color: white;
+.user p {
+  margin-bottom: 30px;
 }
