@@ -194,3 +194,12 @@ footer li {
   width: 200px;
   margin: 10px;
 }
+.box .avatar {
+  width: 76px;
+  height: 76px;
+  margin-right: 10px;
+}
+
+.box .infoBox {
+  flex-grow: 1;
+}

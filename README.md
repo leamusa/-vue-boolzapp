@@ -27,4 +27,5 @@ We replicated the design, allowing messages sent by the user to appear in green 
 
 - **Delete message**
   Clicking on a message displays a dropdown menu that allows deleting the selected message.
-- **Display time and last sent/received message in contact list**: Displaying the time and the last message sent/received in the contact list view.
+- **Display time and last sent/received message in contact list**
+  Displaying the time and the last message sent/received in the contact list view.
