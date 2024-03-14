@@ -62,27 +62,23 @@ img {
   height: 80px;
 }
 
-input {
-  width: 99%;
-  height: 50px;
-}
-
 .box {
   display: flex;
   background-color: #159688;
   align-items: center;
+  justify-content: space-around
   justify-content: space-around;
-}
+  border: solid 1px;
+  background-color: white;
 
+}
 .avatar {
   width: 70px;
   margin-top: 10px;
 }
-
 .user h3 {
   margin-top: 30px;
 }
-
 .user p {
   margin-bottom: 30px;
 }

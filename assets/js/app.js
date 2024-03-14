@@ -3,10 +3,12 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      contatti: [
+      contacts: [
         {
-          nome: "Michele",
+          name: "Michele",
           avatar: "assets/img/avatar_1.jpg",
+          text: "Last message sent",
+          hour: "12",
         },
       ],
     };
