@@ -147,19 +147,26 @@ createApp({
       });
     },
     addMessage() {
-      const options = {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
       const today = new Date();
 
+      // add msg inviato dall'user
       this.contacts[this.activeBox].messages.push({
-        date: today,
+        date: today.toLocaleString(),
         message: this.sentMessage,
         status: "sent",
       });
+
+      // Simula una risposta dall'interlocutore
+      setTimeout(() => {
+        this.contacts[this.activeBox].messages.push({
+          date: today.toLocaleString(),
+          message: "ok",
+          status: "received",
+        });
+      }, 1000); //after 1 second
+
+      // Reset il campo del messaggio inviato
+      this.sentMessage = "";
     },
     selectedMessage(index) {
       if (this.messageSelection === "2") {
