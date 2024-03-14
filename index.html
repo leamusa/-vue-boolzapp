@@ -108,8 +108,8 @@
             :class="{ received: message.status === 'received' }"
           >
             <div>{{ message.message }}</div>
-            <select v-model="selectedMessage" @change="selectedMessage(index)">
-              <option><i class="fa-light fa-chevron-down"></i></option>
+            <select v-model="messageSelection" @change="selectedMessage(index)">
+              <option value="0"><i class="fa-light fa-chevron-down"></i></option>
               <option value="1">Message Info</option>
               <option value="2">Delete message</option>
             </select>
