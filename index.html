@@ -44,7 +44,12 @@
             </div>
             <div class="search">
               <button type="submit"><i class="fa fa-search"></i></button>
-              <input type="text" placeholder="Search or start a new chat " />
+              <input
+                type="text"
+                id="searchInput"
+                name="searchInput"
+                placeholder="Search or start a new chat"
+              />
             </div>
           </div>
           <div class="box" v-for="contact in contacts" :key="contact.id">
@@ -61,8 +66,24 @@
           </div>
         </div>
         <div class="chat"></div>
+
+        <!-- message details -->
+        <div v-if="activeContact">
+          <h3>{{ activeContact.name }}</h3>
+          <div v-for="message in activeContact.messages" :key="message.date">
+            <p>{{ message.message }}</p>
+            <!-- Add more HTML for message details, such as time -->
+          </div>
+          <div v-if="activeContact.messages.length === 0">
+            <p>No messages yet. Start the conversation!</p>
+          </div>
+        </div>
+        <div v-else>
+          <p>Please select a contact to view conversation</p>
+        </div>
       </div>
     </div>
+
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
