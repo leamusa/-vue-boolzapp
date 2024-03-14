@@ -1,17 +1,21 @@
-# -vue-boolzapp
-
-Milestone 1
-● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
-dall’interlocutore (bianco) assegnando due classi CSS diverse
-● Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
-nome e immagine di ogni contatto
+- **Replica of the layout**: We replicated the design, allowing messages sent by the user to appear in green and messages from the interlocutor to appear in white, assigning two different CSS classes.
+- **Dynamic display of contact list**: Using the v-for directive, we dynamically display the name and image of each contact.
 
 Milestone 2
-● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
-messaggi relativi al contatto attivo all’interno del pannello della conversazione
-● Click sul contatto mostra la conversazione del contatto cliccato
+
+- **Dynamic display of messages**: Using the v-for directive, we display all messages related to the active contact within the conversation panel.
+- **Clicking on a contact shows the conversation**: When a contact is clicked, the conversation of the clicked contact is displayed.
+
 Milestone 3
-● Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
-“enter” il testo viene aggiunto al thread sopra, come messaggio verde
-● Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
-un “ok” come risposta, che apparirà dopo 1 secondo
+
+- **Adding a message**: The user writes a message in the bottom part, and upon pressing "enter", the message is added to the thread above as a green message.
+- **Response from the interlocutor**: With each message insertion, the user receives an "ok" as a response, which appears after 1 second.
+
+Milestone 4
+
+- **User search**: By typing something in the input on the left, only contacts whose name contains the entered letters are displayed (e.g., Marco, Matteo, Martina -> Typing "mar" will show only Marco and Martina).
+
+Milestone 5 (optional)
+
+- **Delete message**: Clicking on a message displays a dropdown menu that allows deleting the selected message.
+- **Display time and last sent/received message in contact list**: Displaying the time and the last message sent/received in the contact list view.

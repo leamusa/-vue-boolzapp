@@ -1,85 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta tags -->
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- External CSS -->
+    <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://unpkg.com/vue@3"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://unpkg.com/vue@3"></script>
-    <!-- Title -->
-    <title>Boolzapp</title>
   </head>
   <body>
-    <header></header>
     <div id="app">
-      <div class="container">
-        <div class="slider">
-          <div class="profile" v-for="contact in contacts" :key="contact.id">
-            <div class="img">
-              <img :src="contact.avatar" :alt="contact.name" />
-              <div class="listIcons">
-                <ul>
-                  <li>a</li>
-                  <li>b</li>
-                  <li>c</li>
-                </ul>
-              </div>
-            </div>
-            <div class="info">
-              <div class="icon">
-                <p>X</p>
-              </div>
-              <div class="text">
-                <p>Receive notifications for new messages</p>
-                <a href="#">Enable desktop notifications</a>
-              </div>
-            </div>
-            <div class="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
-              <input
-                type="text"
-                id="searchInput"
-                name="searchInput"
-                placeholder="Search or start a new chat"
-              />
-            </div>
+      <div class="container-left">
+        <div class="profile">
+          <div class="img">
+            <img src="./assets/img/avatar_io.jpg" alt="me" />
           </div>
-          <div class="box" v-for="contact in contacts" :key="contact.id">
-            <div class="avatar">
-              <img :src="contact.avatar" :alt="contact.name" />
-            </div>
-            <div class="user">
-              <h3>{{ contact.name }}</h3>
-              <p>{{ contact.lastMessage }}</p>
-            </div>
-            <div class="clock">
-              <p>{{ contact.lastMessageTime }}</p>
-            </div>
+          <div class="setting">
+            <ul>
+              <li><i class="fa-solid fa-rotate"></i></li>
+              <li><i class="fa-solid fa-message"></i></li>
+              <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+            </ul>
           </div>
         </div>
-        <div class="chat"></div>
 
-        <!-- message details -->
-        <div v-if="activeContact">
-          <h3>{{ activeContact.name }}</h3>
-          <div v-for="message in activeContact.messages" :key="message.date">
-            <p>{{ message.message }}</p>
-            <!-- Add more HTML for message details, such as time -->
+        <div class="info">
+          <div class="icon">
+            <i class="fa-solid fa-bell-slash"></i>
           </div>
-          <div v-if="activeContact.messages.length === 0">
-            <p>No messages yet. Start the conversation!</p>
+          <div class="text">
+            <p>Receive notifications for new messages</p>
+            <a href="#">Enable desktop notifications</a>
           </div>
         </div>
-        <div v-else>
-          <p>Please select a contact to view conversation</p>
+
+        <div class="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <input
+            @keyup="filterContacts"
+            v-model="search"
+            type="text"
+            placeholder="Search or start a new chat "
+          />
+        </div>
+
+        <div class="address-book">
+          <div
+            class="box"
+            v-model="chat"
+            v-show="contact.visible"
+            v-for="(contact, index) in contacts"
+            :class="{'active': index == activeBox}"
+            @click="changeBox(index)"
+          >
+            <div class="avatar">
+              <img :src="contact.avatar" alt="avatar_1" />
+            </div>
+            <div class="infoBox">
+              <h3>{{contact.name}}</h3>
+              <p>{{contact.text}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-right">
+        <div class="openProfile">
+          <div class="avatar">
+            <img :src="contacts[activeBox].avatar" alt="" />
+            {{ contacts[activeBox].name }}
+          </div>
+          <div class="setting_1">
+            <ul>
+              <li><i class="fa-solid fa-magnifying-glass"></i></li>
+              <li><i class="fa-solid fa-paperclip"></i></li>
+              <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <footer>
+          <ul>
+            <li><i class="fa-regular fa-face-smile"></i></li>
+            <li>
+              <input
+                v-model="sentMessage"
+                @keyup.enter="addMessage"
+                type="text"
+                placeholder="write a message"
+              />
+            </li>
+            <li><i class="fa-solid fa-microphone"></i></li>
+          </ul>
+        </footer>
+
+        <div class="messages">
+          <div class="send" v-for="message in contacts[activeBox].messages">
+            <div>{{message.message}}</div>
+            <select v-model="selectedMessage" @change="selectedMessage(index)">
+              <option><i class="fa-light fa-chevron-down"></i></option>
+              <option value="1">Message Info</option>
+              <option value="2">Delete message</option>
+            </select>
+          </div>
+          <div class="received"></div>
         </div>
       </div>
     </div>
