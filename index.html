@@ -22,9 +22,9 @@
     <div id="app">
       <div class="container">
         <div class="slider">
-          <div class="profile">
+          <div class="profile" v-for="contact in contacts" :key="contact.id">
             <div class="img">
-              <img src="./assets/img/avatar_io.jpg" alt="io" />
+              <img :src="contact.avatar" :alt="contact.name" />
               <div class="listIcons">
                 <ul>
                   <li>a</li>
@@ -47,16 +47,16 @@
               <input type="text" placeholder="Search or start a new chat " />
             </div>
           </div>
-          <div class="box">
+          <div class="box" v-for="contact in contacts" :key="contact.id">
             <div class="avatar">
-              <img src="./assets/img/avatar_1.jpg" alt="avatar_1" />
+              <img :src="contact.avatar" :alt="contact.name" />
             </div>
             <div class="user">
-              <h3>Michele</h3>
-              <p>Last message sent</p>
+              <h3>{{ contact.name }}</h3>
+              <p>{{ contact.lastMessage }}</p>
             </div>
             <div class="clock">
-              <p>12:00</p>
+              <p>{{ contact.lastMessageTime }}</p>
             </div>
           </div>
         </div>
