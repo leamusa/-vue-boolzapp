@@ -100,20 +100,22 @@
             <li><i class="fa-solid fa-microphone"></i></li>
           </ul>
         </footer>
-
+      
         <div class="messages">
-          <div class="send" v-for="message in contacts[activeBox].messages">
-            <div>{{message.message}}</div>
+          <div
+            class="send"
+            v-for="(message, index) in contacts[activeBox].messages"
+            :class="{ received: message.status === 'received' }"
+          >
+            <div>{{ message.message }}</div>
             <select v-model="selectedMessage" @change="selectedMessage(index)">
               <option><i class="fa-light fa-chevron-down"></i></option>
               <option value="1">Message Info</option>
               <option value="2">Delete message</option>
             </select>
           </div>
-          <div class="received"></div>
         </div>
       </div>
-    </div>
 
     <script src="./assets/js/app.js"></script>
   </body>
