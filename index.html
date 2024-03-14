@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
     <title>Document</title>
+    <!-- External CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Vue.js -->
     <script src="https://unpkg.com/vue@3"></script>
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -16,13 +21,17 @@
     />
   </head>
   <body>
+    <!-- Vue app container -->
     <div id="app">
+      <!-- Left container -->
       <div class="container-left">
+        <!-- Profile section -->
         <div class="profile">
           <div class="img">
             <img src="./assets/img/avatar_io.jpg" alt="me" />
           </div>
           <div class="setting">
+            <!-- Setting icons -->
             <ul>
               <li><i class="fa-solid fa-rotate"></i></li>
               <li><i class="fa-solid fa-message"></i></li>
@@ -31,6 +40,7 @@
           </div>
         </div>
 
+        <!-- Information section -->
         <div class="info">
           <div class="icon">
             <i class="fa-solid fa-bell-slash"></i>
@@ -41,6 +51,7 @@
           </div>
         </div>
 
+        <!-- Search bar -->
         <div class="search">
           <button type="submit"><i class="fa fa-search"></i></button>
           <input
@@ -51,6 +62,7 @@
           />
         </div>
 
+        <!-- Address book -->
         <div class="address-book">
           <div
             class="box"
@@ -71,7 +83,9 @@
         </div>
       </div>
 
+      <!-- Right container -->
       <div class="container-right">
+        <!-- Open profile section -->
         <div class="openProfile">
           <div class="avatar">
             <img :src="contacts[activeBox].avatar" alt="" />
@@ -86,6 +100,7 @@
           </div>
         </div>
 
+        <!-- Footer section -->
         <footer>
           <ul>
             <li><i class="fa-regular fa-face-smile"></i></li>
@@ -101,6 +116,7 @@
           </ul>
         </footer>
       
+        <!-- Messages section -->
         <div class="messages">
           <div
             class="send"
@@ -108,6 +124,7 @@
             :class="{ received: message.status === 'received' }"
           >
             <div>{{ message.message }}</div>
+            <!-- Select dropdown for message options -->
             <select v-model="messageSelection" @change="selectedMessage(index)">
               <option value="0"><i class="fa-light fa-chevron-down"></i></option>
               <option value="1">Message Info</option>
@@ -117,6 +134,7 @@
         </div>
       </div>
 
+    <!-- JavaScript -->
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
