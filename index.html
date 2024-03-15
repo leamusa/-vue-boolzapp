@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Title -->
-    <title>Document</title>
+    <title>Vs boozapp</title>
     <!-- External CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- Vue.js -->
@@ -58,30 +58,33 @@
             @keyup="filterContacts"
             v-model="search"
             type="text"
-            placeholder="Search or start a new chat "
+            placeholder="Search or start a new chat"
           />
         </div>
 
-        <!-- Address book -->
         <div class="address-book">
-          <div
-            class="box"
-            v-model="chat"
-            v-show="contact.visible"
-            v-for="(contact, index) in contacts"
-            :class="{'active': index == activeBox}"
-            @click="changeBox(index)"
-          >
-            <div class="avatar">
-              <img :src="contact.avatar" alt="avatar_1" />
+          <template v-for="(contact, index) in contacts">
+            <div
+              v-if="contact.visible"
+              class="box"
+              :class="{'active': index === activeBox}"
+              @click="changeBox(index)"
+            >
+              <div class="avatar">
+                <img :src="contact.avatar" alt="avatar_1" />
+              </div>
+              <div class="infoBox">
+                <h3>{{contact.name}}</h3>
+                <p>{{contact.text}}</p>
+              </div>
             </div>
-            <div class="infoBox">
-              <h3>{{contact.name}}</h3>
-              <p>{{contact.text}}</p>
+            <div v-else-if="!contact.visible && index === contacts.length - 1">
+              <p>No contacts found.</p>
             </div>
-          </div>
+          </template>
         </div>
       </div>
+      <!-- Chiusura del contenitore sinistro -->
 
       <!-- Right container -->
       <div class="container-right">
@@ -115,7 +118,7 @@
             <li><i class="fa-solid fa-microphone"></i></li>
           </ul>
         </footer>
-      
+
         <!-- Messages section -->
         <div class="messages">
           <div
@@ -126,13 +129,17 @@
             <div>{{ message.message }}</div>
             <!-- Select dropdown for message options -->
             <select v-model="messageSelection" @change="selectedMessage(index)">
-              <option value="0"><i class="fa-light fa-chevron-down"></i></option>
+              <option value="0">
+                <i class="fa-light fa-chevron-down"></i>
+              </option>
               <option value="1">Message Info</option>
               <option value="2">Delete message</option>
             </select>
           </div>
         </div>
       </div>
+      <!-- Chiusura del contenitore destro -->
+    </div>
 
     <!-- JavaScript -->
     <script src="./assets/js/app.js"></script>

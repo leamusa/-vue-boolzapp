@@ -39,6 +39,10 @@ We replicated the design, allowing messages sent by the user to appear in green 
 - **@click**: Used to handle click events, such as changing the active contact in the address book.
 - **@keyup.enter**: Used to trigger the `addMessage` method when the Enter key is pressed in the message input field.
 - **:class**: Used to dynamically bind CSS classes based on certain conditions, such as applying the `active` class to the active contact in the address book.
+- `v-if` and `v-else`
+  Used to condition the display of items based on a Boolean condition.  
+  in the contact list, use:
+  `v-if` to show a contact only if it is visible and `v-else` to show a message "No contact found" when no contact is visible.
 
 ## Features:
 

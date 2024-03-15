@@ -149,30 +149,29 @@ createApp({
     addMessage() {
       const today = new Date();
 
-      // add il msg sent from user
+      // Aggiungi il messaggio inviato dall'utente
       this.contacts[this.activeBox].messages.push({
         date: today.toLocaleString(),
         message: this.sentMessage,
         status: "sent",
       });
 
-      // Simulate an answer dall'interlocutore
+      // Simula una risposta dall'interlocutore
       setTimeout(() => {
         this.contacts[this.activeBox].messages.push({
           date: today.toLocaleString(),
-          message: "ok",
+          message: "Ok",
           status: "received",
         });
-      }, 1000); //dopo 1 secondo
+      }, 1000); // Dopo 1 secondo
 
-      // Reset il campo del msg sent
+      // Reseta il campo del messaggio inviato
       this.sentMessage = "";
     },
 
     selectedMessage(index) {
-      if (this.messageSelection === "2") {
-        this.contacts[this.activeBox].messages.splice(index, 1);
-      }
+      // Rimuovi il messaggio selezionato
+      this.contacts[this.activeBox].messages.splice(index, 1);
     },
   },
 }).mount("#app");
