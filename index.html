@@ -78,10 +78,10 @@
                 <p>{{contact.text}}</p>
               </div>
             </div>
-            <div v-else-if="!contact.visible && index === contacts.length - 1">
-              <p>No contacts found.</p>
-            </div>
           </template>
+          <div v-if="!contactsFound" class="box">
+            <p>No contacts found.</p>
+          </div>
         </div>
       </div>
       <!-- Chiusura del contenitore sinistro -->

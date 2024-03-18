@@ -132,6 +132,7 @@ createApp({
         },
       ],
       activeBox: 0,
+      contactsFound: true, // Initially set to true
     };
   },
   methods: {
@@ -139,39 +140,42 @@ createApp({
       this.activeBox = index;
     },
     filterContacts() {
+      const searchLowerCase = this.search.toLowerCase();
       this.contacts.forEach((contact) => {
-        contact.visible = true;
-        if (!contact.name.toLowerCase().includes(this.search.toLowerCase())) {
-          contact.visible = false;
-        }
+        contact.visible = contact.name.toLowerCase().includes(searchLowerCase);
       });
+      this.checkContactsFound(); // Check if there are contacts found after filtering
     },
     addMessage() {
       const today = new Date();
 
-      // Aggiungi il messaggio inviato dall'utente
+      // Add the message sent by the user
       this.contacts[this.activeBox].messages.push({
         date: today.toLocaleString(),
         message: this.sentMessage,
         status: "sent",
       });
 
-      // Simula una risposta dall'interlocutore
+      // Simulate a response from the recipient
       setTimeout(() => {
         this.contacts[this.activeBox].messages.push({
           date: today.toLocaleString(),
           message: "Ok",
           status: "received",
         });
-      }, 1000); // Dopo 1 secondo
+      }, 1000); // After 1 second
 
-      // Reseta il campo del messaggio inviato
+      // Reset the sent message field
       this.sentMessage = "";
     },
 
     selectedMessage(index) {
-      // Rimuovi il messaggio selezionato
+      // Remove the selected message
       this.contacts[this.activeBox].messages.splice(index, 1);
+    },
+    checkContactsFound() {
+      // Check if there are visible contacts after filtering
+      this.contactsFound = this.contacts.some((contact) => contact.visible);
     },
   },
 }).mount("#app");

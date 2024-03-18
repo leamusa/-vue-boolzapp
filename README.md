@@ -30,21 +30,7 @@ We replicated the design, allowing messages sent by the user to appear in green 
 - **Display time and last sent/received message in contact list**
   Displaying the time and the last message sent/received in the contact list view.
 
-## Vue tools:
-
-- **v-for**: Used to iterate through the list of contacts in the address book.
-- **v-show**: Used to conditionally display elements based on certain conditions, such as the visibility of contacts.
-- **@keyup**: Used to listen for keyboard events, specifically to trigger the `filterContacts` method when a key is pressed.
-- **v-model**: Used for two-way data binding to synchronize the `search` and `sentMessage` variables with the input fields.
-- **@click**: Used to handle click events, such as changing the active contact in the address book.
-- **@keyup.enter**: Used to trigger the `addMessage` method when the Enter key is pressed in the message input field.
-- **:class**: Used to dynamically bind CSS classes based on certain conditions, such as applying the `active` class to the active contact in the address book.
-- `v-if` and `v-else`
-  Used to condition the display of items based on a Boolean condition.  
-  in the contact list, use:
-  `v-if` to show a contact only if it is visible and `v-else` to show a message "No contact found" when no contact is visible.
-
-## Features:
+## Features
 
 - **Profile Section**: Displays user profile image and settings.
 - **Information Section**: Provides options for receiving notifications and other information.
@@ -56,30 +42,33 @@ We replicated the design, allowing messages sent by the user to appear in green 
 
 ## js Tools
 
-1. **`const { createApp } = Vue;`**: Destructuring assignment to import the `createApp` function from the Vue object.
+### Vue.js Methods Used:
 
-2. **`createApp({ ... }).mount("#app");`**: This is where the Vue application is created and mounted to the element with the ID `"app"` in the HTML file.
+The methods used in the object `methods` are as follows:
 
-3. **`data() { ... }`**: This is a method that returns an object containing the data properties for the Vue application. It includes:
+1. **changeBox(index)**: This method is called when you want to change the active chat window. Take an index as an argument and set `activeBox` on that index.
 
-   - **`messageSelection`**: Represents the selected option in the message selection dropdown.
-   - **`sentMessage`**: Represents the message entered by the user in the input field.
-   - **`search`**: Represents the search query entered by the user in the search input field.
-   - **`chat`**: Represents some chat-related data, but its purpose is not clear from the provided code snippet.
-   - **`contacts`**: Represents an array of contact objects, each containing contact information and an array of messages.
-   - **`activeBox`**: Represents the index of the currently active contact box.
+2. **filterContacts()**: This method filters contacts based on the search string entered in the search bar. Converts the search string to lowercase, then iterates through all contacts and sets the `visible` property of each contact based on whether the contact name includes the search string or not. After filtering contacts, call the `checkContactsFound()` method to check if there are visible contacts after filtering.
 
-4. **`methods: { ... }`**:
-   (This) object contains methods that define the behavior of the Vue application. It includes:
+3. **addMessage()**: This method is called when sending a new message. Adds the message sent by the user to the message list of the active contact, along with the date and status "sent". Next, it simulates a reply from the recipient by adding an "Ok" message after a second. Finally, it resets the field of the sent message.
 
-   - **`changeBox(index)`**:
-     Sets the `activeBox` property to the index of the clicked contact box.
-   - **`filterContacts()`**:
-     Filters the contacts based on the search query entered by the user.
-   - **`addMessage()`**:
-     Adds a new message to the active contact's message array, simulates a response after a delay, and resets the `sentMessage` field.
-   - **`selectedMessage(index)`**:
-     Deletes a message from the active contact's message array based on the selected option in the message selection dropdown.
+4. **selectedMessage(index)**: This method is called when you want to delete a message. It takes the index of the selected message as argument and removes it from the message list of the active contact.
 
-5. **`.mount("#app")`**:
-   Mounts the Vue application to the element with the ID `"app"` in the HTML file, rendering the Vue components and enabling interactivity.
+5. **checkContactsFound()**: This method checks for visible contacts after filtering. Use the `some()` method to check if at least one of the contacts has the property `visible` set to `true`. If at least one contact is visible, set `contactsFound` to `true`, otherwise set it to `false`.
+
+### Vue.js Directives Used:
+
+1. **v-model**:
+
+   - Used to link input value to Vue data attributes, such as `search` and `sentMessage`, to synchronize user interface data with application status.
+
+2. **@keyup**:
+
+   - Used to listen to key press events on the keyboard, such as `@keyup="filterContacts"` to perform a function when a key is released on the keyboard.
+
+3. **v-if\***:
+
+   - Used to condition the rendering of HTML elements by the value of a Boolean condition, for example `v-if="contact.visible"` to show only visible contacts.
+
+4. **v-for\***:
+   - Used to iterate on a list of elements and dynamically generate HTML elements, for example `<template v-for="(contact, index) in contacts">` to dynamically generate contact boxes.
